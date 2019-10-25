@@ -17,7 +17,7 @@ public class Arbol<T extends Comparable<T>> {
     /**
      *
      */
-    public int len;
+    private int len;
     
     public Arbol() {
         this.len = 0;
@@ -45,49 +45,68 @@ public class Arbol<T extends Comparable<T>> {
     }
     
 
-    private NodoArbol<T> insert(T dato, NodoArbol<T> current){
+    private NodoArbol<T> insert_aux(T dato, NodoArbol<T> current,Clave nueva){
+            
+           // System.out.print(3);
+            //System.out.println(nueva.getWorld());
             if (current==null) {
                     len++;
-                    return new NodoArbol<>(dato);
-            }if (dato.compareTo(current.getValor())<0) {
-                    current.setLeft(insert(dato,current.getLeft()));
-            }else if (dato.compareTo(current.getValor())>0){
-                    current.setRight(insert(dato,current.getRight()));
-            }return current;
-    }
 
-    public void inserter( T nodo ) {
-        this.insert( nodo , this.raiz );
+                    NodoArbol<T>nuevo=new NodoArbol<>();
+                    nuevo.setClave(nueva);
+                    nuevo.setValor(dato);
+                    
+                    //System.out.println(nueva.getValor());
+                    nuevo.setWorld(nueva.getWorld());
+                    return nuevo;
+            }if (dato.compareTo(current.getValor())<0) {
+                    current.setLeft(insert_aux(dato,current.getLeft(),nueva));
+            }else if (dato.compareTo(current.getValor())>0){
+                    current.setRight(insert_aux(dato,current.getRight(),nueva));
+            }else if(dato.compareTo(current.getValor())==0){
+                    current.setClave(nueva);
+            }return current;
+            
+    }
+   // public void insert()
+    public void insert( T nodo , Clave nueva) {
+        //System.out.println(nueva.getWorld());
+        this.insert_aux( nodo , this.raiz ,nueva);
+    }
+    
+    public void insert2(T dato){
+        this.insert_aux(dato,this.raiz,null);
     }
     
     public void preOrden() {
-            preOrden(raiz);
+            preOrden(this.raiz);
     }
     private void preOrden(NodoArbol<T> temp){
             if (temp != null) {
-                    System.out.print(temp.getValor()+"\n");
-                    preOrden(temp.getLeft());
-                    preOrden(temp.getRight());
+                    
+                System.out.print(temp.getValor()+"\n");
+                preOrden(temp.getLeft());
+                preOrden(temp.getRight());
             }
     }
     public void inOrden() {
-            inOrden1(raiz);
+            inOrden1(this.raiz);
     }
     private void inOrden1(NodoArbol<T> temp) {
             if (temp != null) {
-                    inOrden1(temp.getLeft());
-                    System.out.print(temp.getValor()+",");
-                    inOrden1(temp.getRight());
+                inOrden1(temp.getLeft());
+                System.out.print(temp.getValor()+",");
+                inOrden1(temp.getRight());
             }
     }
     public void postOrden() {
-            postOrden(raiz);
+            postOrden(this.raiz);
     }
     private void postOrden(NodoArbol<T> temp) {
             if (temp != null) {
-                    postOrden(temp.getLeft());
-                    postOrden(temp.getRight());
-                    System.out.print(temp.getValor()+"\n");
+                postOrden(temp.getLeft());
+                postOrden(temp.getRight());
+                System.out.print(temp.getValor()+"\n");
             }
     }
     
@@ -95,12 +114,15 @@ public class Arbol<T extends Comparable<T>> {
             return buscarDato_aux(dato,raiz);
     }
     private NodoArbol<T> buscarDato_aux(T dato, NodoArbol<T> temp) {
-            if (temp.getValor().equals(dato)) {
+            if (dato.compareTo(temp.getValor())==0) {
                     return temp;
             }else if (dato.compareTo(temp.getValor())< 0) {
-                    return temp.getValor()==null? null:buscarDato_aux(dato,temp.getLeft());
+                //System.out.println(temp.getValor());
+                return temp.getValor()==null? null:buscarDato_aux(dato,temp.getLeft());
             }else{
-                    return temp.getRight()==null? null:buscarDato_aux(dato,temp.getRight()); 
+                //System.out.println(temp.getValor());
+                return temp.getRight()==null? null:buscarDato_aux(dato,temp.getRight()); 
+                
             }
     }
 }

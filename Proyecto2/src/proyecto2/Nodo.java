@@ -12,6 +12,10 @@ package proyecto2;
 public class Nodo<T> {
     private T dato;    
     private Nodo<T> siguiente;
+    private T Object;
+
+
+    
     
     /**
      * Constructor del Nodo vacio
@@ -49,6 +53,14 @@ public class Nodo<T> {
 
     public void setDato(T dato) {
         this.dato = dato;
+    }
+    
+    public T getObject() {
+        return Object;
+    }
+
+    public void setObject(T Object) {
+        this.Object = Object;
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package proyecto2;
 
+import java.net.URISyntaxException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,32 +30,15 @@ public class Proyecto2 extends Application {
 
     /**
      * @param args the command line arguments
+     * @throws java.net.URISyntaxException
      */
-    public static void main(String[] args) {
-        Lista<Integer> lista=new Lista<>();
-        lista.addFirst(16);
-        lista.addFirst(0);
-        lista.addFirst(7);
-       // lista.addFirst(3);
-        lista.addFirst(2);
-        lista.addFirst(1);
-        lista.addFirst(14);
-        lista.addFirst(9);
-        lista.addFirst(4);
-       // lista.addFirst(5);
-        lista.addFirst(10);
-        lista.addFirst(6);
-        lista.addFirst(8);
-        
-        System.out.println();
-        //Sorted.bubbleSort(lista);
-       // Sorted.quickSort(lista);
-        //Sorted.selectionSort(lista);
-        Sorted.radixsort(lista);
+    public static void main(String[] args) throws URISyntaxException {
 
-
-        lista.print();
-        
+      //  Arbol.preOrden();
+      //  Arbol<Integer>arbol=Crear_Wtree.
+        Arbol<Integer>arbol=Crear_Wtree.ArbolW();
+        arbol.search(7231421);
+        //Arbol.search(6);
         launch(args);
     }
     

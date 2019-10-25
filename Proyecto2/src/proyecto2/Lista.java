@@ -26,6 +26,11 @@ public class Lista<T> {
         len=0;        
     }
 
+    public Lista(Nodo<T> head, int len) {
+        this.head = head;
+        this.len = len;
+    }
+    
     public Nodo<T> getHead() {
         return head;
     }
@@ -204,6 +209,26 @@ public class Lista<T> {
         }
         return false;
     }
+    
+        /**
+     * Metodo para buscar si un dato esta en la lista
+     * @param dato
+     * @return retorna un boolean segun si esta o no el dato
+     */
+    public Integer pos(T dato){
+        Nodo<T> aux=head;
+        Integer posi=0;
+        while (aux != null){
+            if (aux.getDato().equals(dato)){
+                //System.out.println(aux.getDato());
+                return posi;
+            }
+            aux=aux.getNext();  
+            posi++;
+        }
+        return -1;
+    }
+    
     
 
     /**

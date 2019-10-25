@@ -1,0 +1,6 @@
+\\txt\\Mera.txt
+\\txt\\archivo.txt
+\\pdf\\Kenet.txt
+\\pdf\\Pedro.txt
+\\docx\\Juan.txt
+\\docx\\Mario.txt

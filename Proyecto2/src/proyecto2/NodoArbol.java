@@ -13,6 +13,8 @@ package proyecto2;
 public class NodoArbol<T extends Comparable<T>> {
        /* Declaraciones de variables */
     private T valor;
+    private String world;
+    private Lista<Clave> listaClaves;
 
     private NodoArbol<T> padre;
     private NodoArbol<T> left;
@@ -21,10 +23,22 @@ public class NodoArbol<T extends Comparable<T>> {
     /* Constructor */
     public NodoArbol(){
         this.valor=null;
+        this.listaClaves=new Lista<>();
+        this.world=null;
     }
     public NodoArbol(T valor) {
         this.valor = valor;
+        this.listaClaves=new Lista<>();
+        this.world=null;
     }
+    
+
+    public NodoArbol(T valor, String world, Lista<Clave> listaClaves) {
+        this.valor = valor;
+        this.world = world;
+        this.listaClaves = listaClaves;
+    }
+    
 
     /* Setters y Getters */
     public void setValor(T valor) {
@@ -56,7 +70,28 @@ public class NodoArbol<T extends Comparable<T>> {
     }
 
     public void setRight(NodoArbol<T> hojaDerecha) {
-        this.left = hojaDerecha;
+        this.right = hojaDerecha;
     }
+
+    public Lista<Clave> getListaClaves() {
+        return listaClaves;
+    }
+
+    public void setListaClaves(Lista<Clave> listaClaves) {
+        this.listaClaves = listaClaves;
+    }
+
+    public void setClave(Clave clave){
+        this.listaClaves.addFirst(clave);
+    }
+
+    public String getWorld() {
+        return world;
+    }
+
+    public void setWorld(String world) {
+        this.world = world;
+    }
+    
     
 }
