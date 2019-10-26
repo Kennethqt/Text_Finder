@@ -18,8 +18,9 @@ public class Crear_Wtree {
         String raiz=RLU.getURL();
         Lista<String> Direcciones=Manejo_txt.L_split(raiz+"\\Direcciones.txt");
         Nodo<String> aux= Direcciones.getHead();
+        System.out.println("f");
+        Direcciones.print();
         while(aux !=null){
-            //System.out.println(aux.getDato());
             Lista<String> Archivo_actual =Manejo_txt.L_split(raiz+aux.getDato());
             Nodo<String> aux2= Archivo_actual.getHead();
             Integer linea=0;

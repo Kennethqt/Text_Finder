@@ -38,19 +38,14 @@ public class Proyecto2 extends Application {
 
       //  Arbol.preOrden();
       //  Arbol<Integer>arbol=Crear_Wtree.
-        String Direc="\\txt\\Mera.txt";
-        Arbol<Integer>arbol=Crear_Wtree.ArbolARC(Direc);
-        String Plano="Arroz con pollo\n y maria";
+       // String Direc="\\txt\\Mera.txt";
+        Arbol<Integer>arbol=Crear_Wtree.ArbolW();
+      //  String Plano="Arroz con pollo\n y maria";
         String Direc2="C:\\Users\\User\\Documents\\GitHub\\Text_Finder\\Proyecto2\\Archivos_texto\\mama.docx";
         
-       // arbol.insert2(5);
-        //arbol.insert2(9);
-        //arbol.insert2(3);
-        //arbol.insert2(8);
-       // arbol.search(7231421);
         //Arbol.search(6);
        // arbol.inOrden();
-       //arbol.inOrden();
+       arbol.inOrden();
        /**
        Lista<Clave>lista=arbol.search(RLU.Calcular("Pero")).getListaClaves();
        Nodo<Clave>aux=lista.getHead();
@@ -60,7 +55,15 @@ public class Proyecto2 extends Application {
            aux=aux.getNext();
         
        }*/
-       Manejo_txt.Actualizar_Archivo_docx(Direc2,Plano);
+      // Manejo_txt.Actualizar_Archivo_docx(Direc2,Plano);
+     // System.out.print(Manejo_txt.Leer_docx(Direc2));
+     // Lista<String>lista2=Manejo_txt.spliting("[\\.]",Direc2);
+     // lista2.print();
+      //String raiz=RLU.getURL();
+      //Lista<String>lista=Manejo_txt.spliting("[\\.]",Direc2 );
+     // lista.print();
+       //Lista<String>lista=Manejo_txt.spliting(" ", "mario y maria se quedaron solos");
+       //lista.print();
        launch(args);
     }
     

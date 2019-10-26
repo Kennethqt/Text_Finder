@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,12 +20,30 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+
 
 /**
  *
  * @author User
  */
 public class Manejo_txt {
+    
+        
+    public static String Leer_archivo(String direc) throws URISyntaxException{
+        String tipo;
+        String[] dt=direc.split("[\\.]");
+        tipo=dt[1];
+        //tipo=lista.getInfo(0);
+        
+        if ("txt".equals(tipo)){
+            System.out.println(tipo);
+            return Leer_txt(direc);
+        }else if ("docx".equals(tipo)){
+            return Leer_docx(direc);
+        } return null;
+           
+    }
     public static void Actualizar_archivo(String direc,String Plano) throws URISyntaxException{ 
         //File directorio = new File("C:\\Users\\elprendiz\\Documents\\NetBeansProjects\\Achivos");
         //File file = new File(directorio,"miarchivo.txt");
@@ -95,10 +114,9 @@ public class Manejo_txt {
         
         return Parrafo;
     }
-    
-    
+
     public static Lista<String> L_split(String direc) throws URISyntaxException{
-        String Leido=Leer_txt(direc);
+        String Leido=Leer_archivo(direc);
        // System.out.println(Leido);
         Lista<String>L_spliter=spliting("\n",Leido);
         return L_spliter;
@@ -106,13 +124,15 @@ public class Manejo_txt {
     }
     
     public static Lista<String> spliting(String separador,String Text){
-       // System.out.println(Text);
+        //System.out.println(Text);
         String[] arrOfStr; 
         arrOfStr = Text.split(separador);
         Lista<String> lista=new Lista<>();
         for (String a : arrOfStr) {
-            //System.out.println(a); 
-            lista.addFirst(a);
+           // System.out.println(a);
+            if (a!=null){
+                lista.addFirst(a);
+            }
         } 
         lista.delete_all(null);
         //lista.print();
@@ -120,7 +140,7 @@ public class Manejo_txt {
     }
     
     public static void Actualizar_Archivo_docx(String direc,String Plano) throws FileNotFoundException, IOException{
-        FileOutputStream fileOutput = null;
+        FileOutputStream fileOutput;
         XWPFDocument document = new XWPFDocument();
         
         try{
@@ -145,7 +165,24 @@ public class Manejo_txt {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
     
+    public static String Leer_docx(String Direc){
+        File file;
+       // WordExtractor extractor = null;
+        String leido="r";
+        try
+        {
+
+            file = new File(Direc);
+            FileInputStream fis = new FileInputStream(file.getAbsolutePath());
+            XWPFDocument document = new XWPFDocument(fis);
+            XWPFWordExtractor extractor = new XWPFWordExtractor(document);
+            leido=extractor.getText();
+            
+        }
+        catch (IOException exep) {}
+        return leido;
     }
 }
 

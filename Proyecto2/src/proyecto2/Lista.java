@@ -259,6 +259,7 @@ public class Lista<T> {
     }  
     public void delete_all(T dato){
         Nodo<T>aux=this.head;
+
         while(aux.getNext()!=null){
             if (aux.getNext().getDato()==dato){
                 aux.setNext(aux.getNext().getNext());             
@@ -266,7 +267,8 @@ public class Lista<T> {
                 aux=aux.getNext();   
             }
         } 
-        
+        //Nodo<Integer> number
+       // this.addFirst(0);
         this.removeFirst();
     }
     
