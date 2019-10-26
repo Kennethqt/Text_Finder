@@ -52,13 +52,18 @@ public class Arbol<T extends Comparable<T>> {
             if (current==null) {
                     len++;
 
-                    NodoArbol<T>nuevo=new NodoArbol<>();
-                    nuevo.setClave(nueva);
-                    nuevo.setValor(dato);
+                    //7NodoArbol<T>nuevo=new NodoArbol<>();
+                    //nuevo.setClave(nueva);
+                    //nuevo.setValor(dato);
                     
                     //System.out.println(nueva.getValor());
-                    nuevo.setWorld(nueva.getWorld());
-                    return nuevo;
+                   // nuevo.setWorld(nueva.getWorld());
+                    //System.out.println("se inserto");
+                    if(nueva==null){
+                     return new NodoArbol<>(dato);   
+                    }else{
+                    return new NodoArbol<>(dato,nueva,nueva.getWorld());
+                    }
             }if (dato.compareTo(current.getValor())<0) {
                     current.setLeft(insert_aux(dato,current.getLeft(),nueva));
             }else if (dato.compareTo(current.getValor())>0){
@@ -93,6 +98,8 @@ public class Arbol<T extends Comparable<T>> {
             inOrden1(this.raiz);
     }
     private void inOrden1(NodoArbol<T> temp) {
+       // System.out.print("AMMADNJRNFVKNRKNCKKRFMJFNKRMFRKFN");
+        //System.out.print(temp);
             if (temp != null) {
                 inOrden1(temp.getLeft());
                 System.out.print(temp.getValor()+",");

@@ -14,7 +14,7 @@ public class NodoArbol<T extends Comparable<T>> {
        /* Declaraciones de variables */
     private T valor;
     private String world;
-    private Lista<Clave> listaClaves;
+    private Lista<Clave> listaClaves=new Lista<>();
 
     private NodoArbol<T> padre;
     private NodoArbol<T> left;
@@ -33,10 +33,10 @@ public class NodoArbol<T extends Comparable<T>> {
     }
     
 
-    public NodoArbol(T valor, String world, Lista<Clave> listaClaves) {
+    public NodoArbol(T valor,Clave Claves,String world) {
         this.valor = valor;
-        this.world = world;
-        this.listaClaves = listaClaves;
+        this.listaClaves.addFirst(Claves);
+        this.world=world;
     }
     
 

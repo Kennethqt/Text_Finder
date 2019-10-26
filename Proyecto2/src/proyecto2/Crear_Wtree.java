@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 public class Crear_Wtree {
     
     public static Arbol<Integer> ArbolW() throws URISyntaxException{
-        Arbol<Integer>arbol=new Arbol<>();
+        Arbol<Integer>arbol=new Arbol<>(0);
         String raiz=RLU.getURL();
         Lista<String> Direcciones=Manejo_txt.L_split(raiz+"\\Direcciones.txt");
         Nodo<String> aux= Direcciones.getHead();
@@ -42,9 +42,46 @@ public class Crear_Wtree {
             }
             
             
-            aux=aux.getNext();          
+            aux=aux.getNext();   
+         //arbol.preOrden();
         }return arbol;
     }
+    
+    public static Arbol<Integer> ArbolARC(String Arc) throws URISyntaxException{
+        Arbol<Integer>arbol=new Arbol<>(0);
+        String raiz=RLU.getURL();
+        
+     
+  
+            //System.out.println(aux.getDato());
+        Lista<String> Archivo_actual =Manejo_txt.L_split(raiz+Arc);
+        Nodo<String> aux2= Archivo_actual.getHead();
+        Integer linea=0;
+        Integer ini=0;
+        while (aux2!=null){
+            Lista<String>palabras=Manejo_txt.spliting("[\\ ,.:;]",aux2.getDato());
+            Nodo<String>aux3=palabras.getHead();
+            while(aux3!=null){
+                //System.out.println(aux3.getDato());
+                Clave nueva=new Clave(Arc,RLU.Calcular(aux3.getDato()),linea,ini,aux3.getDato());
+               // System.out.println(nueva.getIni());
+                arbol.insert(RLU.Calcular(aux3.getDato()), nueva);
+                ini++;
+                aux3=aux3.getNext();
+            }
+
+            linea++;
+            ini=0;
+            aux2=aux2.getNext();
+        }
+
+            
+            
+         //arbol.preOrden();
+        return arbol;
+    }
+    
+    
 
     
 }

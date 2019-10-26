@@ -5,13 +5,20 @@
  */
 
 package proyecto2;
+import com.sun.javaws.Main;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -112,7 +119,34 @@ public class Manejo_txt {
         return lista;
     }
     
+    public static void Actualizar_Archivo_docx(String direc,String Plano) throws FileNotFoundException, IOException{
+        FileOutputStream fileOutput = null;
+        XWPFDocument document = new XWPFDocument();
+        
+        try{
+            
+            fileOutput = new FileOutputStream(new File(direc));
+            
+            XWPFParagraph paragrafo1 = document.createParagraph();
+            XWPFRun runPaRun1 = paragrafo1.createRun();
+            
+            
+            XWPFParagraph paragrafo2 = document.createParagraph();
+            XWPFRun runPaRun2 = paragrafo2.createRun();
+            runPaRun2.addTab();
+            runPaRun2.setText(Plano);
+            
+            
+            document.write(fileOutput);
+            
+        }catch(FileNotFoundException ex){
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     
+    }
 }
 
     

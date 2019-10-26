@@ -5,6 +5,7 @@
  */
 package proyecto2;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,15 +32,36 @@ public class Proyecto2 extends Application {
     /**
      * @param args the command line arguments
      * @throws java.net.URISyntaxException
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) throws URISyntaxException, IOException {
 
       //  Arbol.preOrden();
       //  Arbol<Integer>arbol=Crear_Wtree.
-        Arbol<Integer>arbol=Crear_Wtree.ArbolW();
-        arbol.search(7231421);
+        String Direc="\\txt\\Mera.txt";
+        Arbol<Integer>arbol=Crear_Wtree.ArbolARC(Direc);
+        String Plano="Arroz con pollo\n y maria";
+        String Direc2="C:\\Users\\User\\Documents\\GitHub\\Text_Finder\\Proyecto2\\Archivos_texto\\mama.docx";
+        
+       // arbol.insert2(5);
+        //arbol.insert2(9);
+        //arbol.insert2(3);
+        //arbol.insert2(8);
+       // arbol.search(7231421);
         //Arbol.search(6);
-        launch(args);
+       // arbol.inOrden();
+       //arbol.inOrden();
+       /**
+       Lista<Clave>lista=arbol.search(RLU.Calcular("Pero")).getListaClaves();
+       Nodo<Clave>aux=lista.getHead();
+       while(aux!=null){
+           System.out.println(aux.getDato().getArchivo());
+           System.out.println(aux.getDato().getLinea());
+           aux=aux.getNext();
+        
+       }*/
+       Manejo_txt.Actualizar_Archivo_docx(Direc2,Plano);
+       launch(args);
     }
     
 }
