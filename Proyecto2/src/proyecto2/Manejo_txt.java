@@ -184,6 +184,21 @@ public class Manejo_txt {
         catch (IOException exep) {}
         return leido;
     }
+    
+    public static String[] Carpetas(){
+       
+        try {
+            String leido=Leer_txt("C:\\Users\\User\\Documents\\GitHub\\Text_Finder\\Proyecto2\\Archivos_texto\\Carpetas.txt");
+            String[] archivos=leido.split("\n");  
+            System.out.print("Si se pudo");
+            return archivos;       
+                    
+                    } catch (URISyntaxException ex) {
+            Logger.getLogger(Manejo_txt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+          return null;      
+    }
 }
 
     
