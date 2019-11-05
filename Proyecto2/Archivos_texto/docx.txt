@@ -1,3 +1,0 @@
-\\txt\\Mera.txt
-\\txt\\Kenet.txt
-\\txt\\Pedro.txt

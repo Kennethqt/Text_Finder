@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="Pantalla" prefHeight="582.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto2.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <ScrollPane fx:id="scroll" layoutX="11.0" layoutY="44.0" pannable="true" prefHeight="531.0" prefWidth="755.0">
+        <content>
+          <AnchorPane fx:id="Contenedor" minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1000.0" />
+        </content>
+      </ScrollPane>
+      <Button fx:id="buscar" layoutX="234.0" layoutY="14.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+      <TextField fx:id="set_C" layoutX="336.0" layoutY="14.0" />
+      <Button fx:id="Crea_archivo" layoutX="500.0" layoutY="14.0" mnemonicParsing="false" text="Crear_achivo" />
+      <TextField fx:id="set_A" layoutX="596.0" layoutY="14.0" />
+      <Button fx:id="atras" layoutX="143.0" layoutY="14.0" mnemonicParsing="false" onAction="#put" text="atras" />
+    </children>
+</AnchorPane>

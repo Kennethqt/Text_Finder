@@ -1,3 +1,0 @@
-\\txt\\Juan.txt
-\\txt\\Mario.txt
-\\txt\\mama.docx
